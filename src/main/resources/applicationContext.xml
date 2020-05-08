@@ -65,4 +65,20 @@
 	<bean id="employee5" class="com.nineleaps.spring.model.Employee" 
 	factory-bean="emp" factory-method="createInstance"/>
 		
+		
+	<bean id="abstractaddress" class="com.nineleaps.spring.model.AbstractAddress" >             
+        <lookup-method bean="Address" name="getAddress"/>
+    </bean> 
+    
+    <bean id="addressaware" class="com.nineleaps.spring.model.AddressAware" /> 
+    
+    <bean id="abstractaddress1" class="com.nineleaps.spring.model.AbstractAddress" abstract="true">             
+        <property name="address_line1" value = "Bangalore"/>
+    </bean>
+    
+    <bean id="address5" class="com.nineleaps.spring.model.Address" parent = "abstractaddress1">             
+        <property name="address_line2" value = "KA"/>
+    </bean>
+    
+                
 </beans>

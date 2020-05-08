@@ -3,7 +3,10 @@ package com.nineleaps.spring.beansutility;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.nineleaps.spring.model.AbstractAddress;
 import com.nineleaps.spring.model.Address;
+import com.nineleaps.spring.model.AddressAware;
+import com.nineleaps.spring.model.CollectionExample;
 import com.nineleaps.spring.model.Employee;
 
 public class BeanUtility {
@@ -12,7 +15,7 @@ public class BeanUtility {
 	  
 	  
 	  ConfigurableApplicationContext context = new
-	  ClassPathXmlApplicationContext("applicationContext.xml");
+	  ClassPathXmlApplicationContext("applicationContext.xml","collections.xml");
 	  //ConfigurableApplicationContext context = new FileSystemXmlApplicationContext("classpath:applicationContext.xml"); 
 	  Employee obj = context.getBean("emp", Employee.class); 
 	  System.out.println(obj);
@@ -20,6 +23,16 @@ public class BeanUtility {
 	  Address add = context.getBean("address", Address.class);
 	  
 	  System.out.println(context.getBeanFactory().getType("emp"));
+	  
+	  System.out.println(context.getBean("abstractaddress", AbstractAddress.class));
+	  
+	  System.out.println(context.getBean("addressaware", AddressAware.class));
+	  
+	  CollectionExample ex = context.getBean("springCollection1", CollectionExample.class);
+	  System.out.println(ex.getAddressList());
+	  
+	  Address ad = context.getBean("address5", Address.class);
+	  System.out.println(ad.getAddress_line1()+"--"+ad.getAddress_line2());
 	  
 	  context.registerShutdownHook();
 	  

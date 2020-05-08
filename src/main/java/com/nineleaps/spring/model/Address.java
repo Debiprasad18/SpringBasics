@@ -81,4 +81,7 @@ public class Address implements Serializable, InitializingBean, DisposableBean {
 		System.out.println("Before destroy");
 	}
 
+	/*
+	 * public Address getAddress() { return this; }
+	 */
 }
