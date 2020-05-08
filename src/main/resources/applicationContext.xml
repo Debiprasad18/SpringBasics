@@ -26,10 +26,9 @@
 	</bean>
 
 	
-	<bean id="address" class="com.nineleaps.spring.model.Address" scope="prototype">
+	<bean name="address" class="com.nineleaps.spring.model.Address">
 		<property name="address_line1" value="Bangalore" />
 	</bean>
-
 	
 	<bean id="address1" class="com.nineleaps.spring.model.Address" lazy-init="true">
 		<constructor-arg index="0" value="Bangalore" />
@@ -80,5 +79,12 @@
         <property name="address_line2" value = "KA"/>
     </bean>
     
+    <bean class="com.nineleaps.spring.model.Address" primary="true">
+		<property name="address_line1" value="Mysore" />
+	</bean>
+	
+	<bean class="com.nineleaps.spring.model.Address">
+		<property name="address_line1" value="Kolar" />
+	</bean>
                 
 </beans>
