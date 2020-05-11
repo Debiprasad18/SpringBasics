@@ -15,7 +15,7 @@ public class BeanUtility {
 	  
 	  
 	  ConfigurableApplicationContext context = new
-	  ClassPathXmlApplicationContext("applicationContext.xml","collections.xml");
+	  ClassPathXmlApplicationContext("applicationContext.xml","collections.xml","additionalbean.xml");
 	  //ConfigurableApplicationContext context = new FileSystemXmlApplicationContext("classpath:applicationContext.xml"); 
 	  Employee obj = context.getBean("emp", Employee.class); 
 	  System.out.println(obj);
@@ -34,6 +34,7 @@ public class BeanUtility {
 	  Address ad = context.getBean("address5", Address.class);
 	  System.out.println(ad.getAddress_line1()+"--"+ad.getAddress_line2());
 	  
+	  //System.out.println(context.getBean("bean2"));
 	  context.registerShutdownHook();
 	  
 	  }
