@@ -35,6 +35,7 @@ public class BeanUtility {
 	  System.out.println(ad.getAddress_line1()+"--"+ad.getAddress_line2());
 	  
 	  //System.out.println(context.getBean("bean2"));
+	  
 	  context.registerShutdownHook();
 	  
 	  }

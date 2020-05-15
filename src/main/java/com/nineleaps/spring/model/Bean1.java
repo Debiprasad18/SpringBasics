@@ -1,8 +1,12 @@
 package com.nineleaps.spring.model;
 
-public class Bean1 {
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.lang.Nullable;
+
+public class Bean1 implements BeanPostProcessor {
 	Bean2 bean2;
-	
+
 	String name;
 
 	public Bean1() {
@@ -32,5 +36,23 @@ public class Bean1 {
 	 * public Bean1(Bean2 bean2) { this.bean2 = bean2; }
 	 */
 
+	@Nullable
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("postProcessBeforeInitialization : " + beanName);
+		return bean;
+	}
 
+	@Nullable
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("postProcessAfterInitialization : " + beanName);
+		return bean;
+	}
+
+	public void init() {
+		System.out.println("Inside init method Bean1");
+	}
+
+	public void destroy() {
+		System.out.println("Inside destroy method Bean1");
+	}
 }

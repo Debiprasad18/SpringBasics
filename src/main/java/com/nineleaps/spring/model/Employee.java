@@ -11,8 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.beans.factory.annotation.Required;
+
 @Entity(name = "EMPLOYEE")
-public class Employee implements Serializable {
+public class Employee implements Serializable,Order {
 
 	private static final long serialVersionUID = 5403519058841729377L;
 	@Id
@@ -47,10 +49,12 @@ public class Employee implements Serializable {
 		this.id = id;
 	}
 
+	@Required
 	public String getE_name() {
 		return e_name;
 	}
 
+	@Required
 	public void setE_name(String e_name) {
 		this.e_name = e_name;
 	}
@@ -82,6 +86,11 @@ public class Employee implements Serializable {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", e_name=" + e_name + ", manager=" + manager + ", address=" + address + "]";
+	}
+
+	@Override
+	public int getOrder() {
+		return 2;
 	}
 
 }

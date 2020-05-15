@@ -2,25 +2,38 @@ package com.nineleaps.spring.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import com.nineleaps.spring.dao.EmployeeDao;
-import com.nineleaps.spring.model.Bean1;
+import com.nineleaps.spring.model.Address;
 import com.nineleaps.spring.model.Employee;
 
-@Service
+//@Service
+@Component
 public class EmployeeServiceImpl {
 	
 	@Autowired
 	private EmployeeDao employeeDao;
 	
-	@Autowired
-	private Bean1 bean1;
-
 	public EmployeeServiceImpl() {
 		super();
 	}
+	
+	@Resource
+	@Qualifier("empl")
+	private Employee employee;
+	
+	@Inject
+	@Qualifier("addrs")
+	private Address address;
+	
+	@Autowired
+	private List<String> companyList;
 	
 	//@Autowired
 	public EmployeeServiceImpl(EmployeeDao employeeDao) {
@@ -36,4 +49,7 @@ public class EmployeeServiceImpl {
 		this.employeeDao = employeeDao;
 	}
 	
+	public List<String> getCompanyList(){
+		return companyList;
+	}
 }

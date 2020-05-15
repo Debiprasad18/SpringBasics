@@ -11,10 +11,8 @@ import javax.persistence.Id;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity(name = "ADDRESS")
-public class Address implements Serializable, InitializingBean, DisposableBean {
+public class Address implements Serializable, InitializingBean, DisposableBean,Order {
 
 	private static final long serialVersionUID = -790853363371158411L;
 	@Id
@@ -79,6 +77,11 @@ public class Address implements Serializable, InitializingBean, DisposableBean {
 	@Override
 	public void destroy() throws Exception {
 		System.out.println("Before destroy");
+	}
+
+	@Override
+	public int getOrder() {
+		return 1;
 	}
 
 	/*

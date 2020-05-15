@@ -2,14 +2,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
-   default-autowire-candidates="*Impl">
-   
-	<bean id="bean1" class="com.nineleaps.spring.model.Bean1" >
+	default-autowire-candidates="*Impl">
+
+	<bean id="bean1" class="com.nineleaps.spring.model.Bean1"
+		init-method="init" destroy-method="destroy">
 		<property name="name" value="nineleaps" />
 	</bean>
-	
+
 	<bean id="bean2" class="com.nineleaps.spring.model.Bean2">
 		<property name="bean1" ref="bean1" />
 		<property name="bean1.name" value="nlps" />
 	</bean>
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
 </beans>
